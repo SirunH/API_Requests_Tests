@@ -37,6 +37,23 @@ module.exports = {
         })
     },
 
+    createDataBase() {
+        cy.task('queryDb', "CREATE TABLE UserInfo (PersonID int NOT NULL , UserName varchar(255) NOT NULL , Email varchar(255) NOT NULL , Gender varchar(20),Status varchar(20))")
+
+    },
+
+    addUserInfoToDataBase(id, name, email, gender, status) {
+        cy.task('queryDb', `INSERT INTO UserInfo (PersonID, UserName, Email, Gender, Status) VALUES (${id}, "${name}", "${email}", "${gender}", "${status}");`)
+    },
+
+    addAllUsersInfoToDataBase() {
+        this.getUsers().then(res => {
+            res.body.data.forEach(el => {
+                this.addUserInfoToDataBase(el.id, el.name, el.email, el.gender, el.status)
+            })
+        })
+    },
+
     postRandomUsers() {
         return cy.request({
             method: "POST",

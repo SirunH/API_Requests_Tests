@@ -1,4 +1,13 @@
 {
+    "env": {
+        "db": {
+            "host": "localhost",
+            "user": "root",
+            "password": "password",
+            "database": "gorest"
+        }
+    },
+
     "baseUrl": "https://gorest.co.in/public-api",
     "chromeWebSecurity": false
 }

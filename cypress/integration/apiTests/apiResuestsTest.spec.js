@@ -4,6 +4,11 @@ const needData = require('../../support/usedData')
 
 describe('GET, POST,PATCH,DELETE API requests', () => {
 
+    it('GET user info into database and check ', () => {
+        needData.addAllUsersInfoToDataBase();
+    })
+
+
     it('GET user', () => {
         // 200 Response Code  
         needData.getUsers().then(resp => {
