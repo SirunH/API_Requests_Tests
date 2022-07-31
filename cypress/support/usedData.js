@@ -134,10 +134,14 @@ module.exports = {
     },
 
     getTooManyUsers() {
-        for (let i = 0; i < 400; i++) {
-            this.getUsers().its('body.code').should('not.eq', 429)
-
-        }
+        this.getUsers().then(res => {
+            if (res.body.code !== 429) {
+                this.getTooManyUsers();
+            } else {
+                cy.log("429: Too many request!!!")
+                expect(res.body.code).to.eq(429)
+            }
+        })
     },
 
     getNotCorrectUsers() {

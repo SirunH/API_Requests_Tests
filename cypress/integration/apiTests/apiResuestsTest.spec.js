@@ -5,6 +5,7 @@ const needData = require('../../support/usedData')
 describe('GET, POST,PATCH,DELETE API requests', () => {
 
     it('GET user info into database and check ', () => {
+        // Get user info into Datbase
         needData.addAllUsersInfoToDataBase();
     })
 
@@ -112,7 +113,7 @@ describe('GET, POST,PATCH,DELETE API requests', () => {
 
     it("GET too many user ", () => {
         // 429 Response Code
-        needData.getTooManyUsers() // couldn't write assertion
+        needData.getTooManyUsers()
 
     })
 
