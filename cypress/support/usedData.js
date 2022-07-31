@@ -142,13 +142,6 @@ module.exports = {
                 expect(res.body.code).to.eq(429)
             }
         })
-    },
-
-    getNotCorrectUsers() {
-        for (let i = 0; i < 400; i++) {
-            this.getUserById().its('body.code').should('not.eq', 429)
-        }
     }
-
 
 }
